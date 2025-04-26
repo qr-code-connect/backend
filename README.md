@@ -8,4 +8,4 @@ This API is for all QR Connect app control
 1. Clone the repository;
 2. Install the dependencies
 ```bash
-git clone
+git clone https://github.com/qr-code-connect/backend.git
