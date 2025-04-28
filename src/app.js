@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import Customer from './models/CustomerModel.js';
+
+import { verifyConnectionDatabase } from './config/database.js';
 
 dotenv.config();
 
@@ -21,5 +24,7 @@ app.use((error, req, res, next) => {
     console.error(error.stack);
     res.status(500).json({ message: 'Something went wrong!' });
 });
+
+verifyConnectionDatabase();
 
 export default app;
