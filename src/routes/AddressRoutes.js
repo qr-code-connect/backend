@@ -3,7 +3,7 @@ import { updateAddress, deleteAddress } from '../controllers/AddressController.j
 
 const router = express.Router();
 
-router.put('addresses/:id', updateAddress);
-router.delete('addresses/:id', deleteAddress);
+router.put('update_address/:id', updateAddress);
+router.delete('delete_address/:id', deleteAddress);
 
 export default router;

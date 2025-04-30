@@ -1,9 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-// import Wallet from './models/WalletModel.js';
-// import Address from './models/AddressModel.js';
-
+import errorHandler from './middlewares/errorHandler.js';
 
 import { verifyConnectionDatabase } from './config/database.js';
 
@@ -22,10 +20,7 @@ app.get('/', (req, res) => {
 });
 
 // Middleware to error handling
-app.use((error, req, res, next) => {
-    console.error(error.stack);
-    res.status(500).json({ message: 'Something went wrong!' });
-});
+app.use(errorHandler);
 
 verifyConnectionDatabase();
 
