@@ -32,23 +32,7 @@ const Customer = database.define('Customers', {
         type: DataTypes.ENUM('client', 'admin'),
         defaultValue: 'client',
         allowNull: false
-    },
-    id_wallet: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Wallets',
-            key: 'id'
-        }
-    },
-    id_address: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Addresses',
-            key: 'id'
-        }
-    },
+    }
 }, {
     timestamps: true,
     tableName: 'Customers'

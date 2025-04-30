@@ -1,9 +1,20 @@
 import { Sequelize } from 'sequelize';
 
-export const database = new Sequelize('test-qr-connect', 'postgres', '1', {
-    host: 'localhost',
-    dialect: 'postgres'
+export const database = new Sequelize('postgres', 'postgres', 'qrcodeconnect2025univel', {
+    host: 'database-qr-connect.cpgmqacmqimg.us-east-2.rds.amazonaws.com',
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false // apenas para testes
+        }
+    }
 });
+
+// export const database = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+//     host: process.env.DB_HOST,
+//     dialect: 'postgres'
+// });
 
 export async function verifyConnectionDatabase() {
     try {

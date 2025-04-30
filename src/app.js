@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Customer from './models/CustomerModel.js';
+// import Wallet from './models/WalletModel.js';
+// import Address from './models/AddressModel.js';
+
 
 import { verifyConnectionDatabase } from './config/database.js';
 

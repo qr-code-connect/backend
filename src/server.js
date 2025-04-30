@@ -1,6 +1,7 @@
 import app from './app.js';
 
 import routerCustomer from './routes/CustomerRoutes.js';
+import { associateModels } from './models/associateModels.js';
 
 const PORT = process.env.PORT;
 

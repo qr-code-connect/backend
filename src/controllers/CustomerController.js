@@ -23,7 +23,7 @@ const getAllCustomers = async (req, res) => {
     };
 };
 
-const getCusotmerById = async (req, res) => {
+const getCustomerById = async (req, res) => {
     try {
         const { id } = req.params;
         const customer = await getCustomerByIdService(id);
@@ -57,7 +57,7 @@ const deleteCustomer = async (req, res) => {
 export{ 
     createCustomer,
     getAllCustomers,
-    getCusotmerById,
+    getCustomerById,
     updateCustomer,
     deleteCustomer
 };

@@ -7,9 +7,14 @@ const Address = database.define('Addresses', {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
-    contry: {
-        type: DataTypes.STRING,
-        allowNull: false
+    id_customer: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'Customers',
+            key: 'id'
+        },
+        onDelete: 'CASCADE'
     },
     state: {
         type: DataTypes.STRING,
