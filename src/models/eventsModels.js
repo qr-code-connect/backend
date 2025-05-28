@@ -1,6 +1,8 @@
 import { DataTypes} from "sequelize";
 import { database } from "../config/database.js";
 import Company from "./companyModel.js";
+import Address from "./AddressModel.js";
+import Customer from "./CustomerModel.js";
 
 
 const Event = database.define('Events', {
@@ -21,9 +23,6 @@ const Event = database.define('Events', {
         type:DataTypes.DATE,
         allowNull:false
     },
-    number_tickets:{
-        type:DataTypes.NUMBER,
-    },
     id_company:{
         type:DataTypes.UUID,
         allowNull:true,
@@ -33,9 +32,20 @@ const Event = database.define('Events', {
         },
         onDelete:"CASCADE"
     },
+    id_address:{
+        type:DataTypes.UUID,
+        allowNull:true,
+        references:{
+            model:'Addresses',
+            key:'id'
+        },
+        onDelete:"CASCADE"
+    },
+   
 })
 
 Event.hasOne(Company,{foreignKey:"id_company"});
+Event.hasOne(Address, {foreignKey:'id_address'});
 
 
 export default Event;
