@@ -16,6 +16,6 @@ app.use(`${process.env.API_BASE}/category`, categoryRoutes);
 app.use(`${process.env.API_BASE}/events`, eventRoutes);
 app.use(`${process.env.API_BASE}/tickets`, ticketRouter);
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0',() => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
