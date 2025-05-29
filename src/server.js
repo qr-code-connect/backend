@@ -6,6 +6,7 @@ import companyRoutes from './routes/CompanyRoutes.js';
 import categoryRoutes from './routes/CategoryRoutes.js'
 import eventRoutes from './routes/EventRoutes.js';
 import ticketRouter from './routes/TicketRoutes.js';
+import transactionsRouter from './routes/TransactionsRoutes.js';
 
 const PORT = process.env.PORT;
 
@@ -14,7 +15,7 @@ app.use(`${process.env.API_BASE}/addresses`, addressRoutes);
 app.use(`${process.env.API_BASE}/companies`, companyRoutes);
 app.use(`${process.env.API_BASE}/category`, categoryRoutes);
 app.use(`${process.env.API_BASE}/events`, eventRoutes);
-app.use(`${process.env.API_BASE}/tickets`, ticketRouter);
+app.use(`${process.env.API_BASE}/transactions`, transactionsRouter);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
