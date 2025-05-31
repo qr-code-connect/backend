@@ -1,22 +1,14 @@
-import Company from "../../models/companyModel.js";
+import Event from "../../models/eventsModels.js";
 
-const getAllCompaniesService = async (userId = null) => {
-  const whereClause = {};
-  
-
-  if (userId) {
-    whereClause.id_customer = userId; 
-  }
-
-  try {
-    const companies = await Company.findAll({
-      where: whereClause,
-      order: [['name', 'ASC']], 
-    });
-    return companies;
-  } catch (error) {
-    throw new Error(`Error fetching companies: ${error.message}`);
-  }
+const getAllEventsService = async () => {
+    try{
+        const events = await Event.findAll();
+        console.log("LOGANDO EVENTS", events);
+        
+        return events;
+    } catch (error) {
+        throw new Error(`Error fetching customers: ${error.message}`);
+    };
 };
 
-export default getAllCompaniesService;
+export default getAllEventsService;
