@@ -7,6 +7,6 @@ import {
 const router = express.Router();
 
 router.post('/create_event',createEvent);
-router.get('/get_all_events',getAllEvents)
+router.get('/get_all_events',getAllEvents);
 
 export default router;
