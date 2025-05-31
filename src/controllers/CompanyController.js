@@ -18,13 +18,18 @@ const createCompany = async (req, res) => {
 
 
 const getAllCompanies = async (req, res) => {
-    try {
-        const customers = await getAllCompaniesService();
-        res.status(200).json(customers);
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching customers', error: error.message });
-    };
+  try {
+    const userId = req.query.userId; 
+    const companies = await getAllCompaniesService(userId);
+    res.status(200).json(companies);
+  } catch (error) {
+    res.status(500).json({ 
+      message: 'Error fetching companies', 
+      error: error.message 
+    });
+  }
 };
+
 export {
     createCompany,
     getAllCompanies
