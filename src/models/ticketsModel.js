@@ -14,6 +14,10 @@ const Ticket = database.define('Tickets', {
         type: DataTypes.BOOLEAN,
         defaultValue:false
     },
+    validatedAt: {
+    type: DataTypes.DATE,
+    allowNull: true
+},
     available: {
         type: DataTypes.BOOLEAN,
         defaultValue:true

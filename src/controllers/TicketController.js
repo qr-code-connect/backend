@@ -1,5 +1,5 @@
 import getAllTicketsService from "../services/TicketsServices/GetAllTicketservice.js";
-
+import validateTicketService from "../services/TicketsServices/validateTicketService.js";
 
 
 export const getAllTickets = async (req, res) => {
@@ -20,3 +20,26 @@ export const getAllTickets = async (req, res) => {
   }
 };
 
+
+
+export const validateTicket = async (req, res) => {
+    try {
+        const { ticketId } = req.params;
+        
+        if (!ticketId) {
+            return res.status(400).json({
+                success: false,
+                message: 'Ticket ID is required'
+            });
+        }
+
+        const result = await validateTicketService(ticketId);
+        
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+};

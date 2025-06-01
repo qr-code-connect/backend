@@ -12,7 +12,10 @@ const CreateTicketService = async (ticketData,numbertickets) => {
         const code = `TICKET-${eventId.slice(0, 8)}-${categoryId.slice(0, 4)}-${i}`;
 
         const qrCodeData = JSON.stringify({
+            ticketId,
             eventId,
+            categoryId,
+            createdAt: new Date().toISOString()
         })
 
         const qrCodeImage = await qrcode.toDataURL(qrCodeData);
