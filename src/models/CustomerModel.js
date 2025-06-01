@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { database } from "../config/database.js";
+import Address from "./AddressModel.js";
 
 const Customer = database.define('Customers', {
     id: {
@@ -32,10 +33,20 @@ const Customer = database.define('Customers', {
         type: DataTypes.ENUM('client', 'admin'),
         defaultValue: 'client',
         allowNull: false
-    }
+    },
+     id_address:{
+        type:DataTypes.UUID,
+        allowNull:true,
+        references:{
+            model:'Addresses',
+            key:'id'
+        },
+        onDelete:"CASCADE"
+    },
 }, {
     timestamps: true,
     tableName: 'Customers'
 });
 
+Customer.hasOne(Address, {foreignKey:'id_address'});
 export default Customer;

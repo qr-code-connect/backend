@@ -21,7 +21,7 @@ export async function verifyConnectionDatabase() {
         await database.authenticate();
         console.log('Connection to the database has been established successfully.');
 
-        //await database.sync({force:true}); // creates the tables by deleting the data
+        //await database.sync(); // creates the tables by deleting the data
         console.log('🗃️☑️ Create tables!');
 
     } catch (error) {

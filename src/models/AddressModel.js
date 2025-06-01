@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { database } from "../config/database.js";
+import Customer from "./CustomerModel.js";
 
 const Address = database.define('Addresses', {
     id: {
@@ -48,5 +49,6 @@ const Address = database.define('Addresses', {
     timestamps: true,
     tableName: 'Addresses'
 });
+
 
 export default Address;
