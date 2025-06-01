@@ -1,15 +1,21 @@
-import PurchaseTicketService from "../services/TicketsServices/purchaseTickeService.js";
-
-const purchaseTicket = async (req, res) => {
-    try {
-        const {ticketId, customerId} = req.body;
-        const result = await PurchaseTicketService(ticketId,customerId);
-
-        return res.status(200).json(result);
-    } catch (error) {
-        return res.status(400).json({ error: error.message }); 
-    }
-}
+import getAllTicketsService from "../services/TicketsServices/GetAllTicketservice.js";
 
 
-export default purchaseTicket;
+
+export const getAllTickets = async (req, res) => {
+  try {
+    const filters = {
+      eventId: req.query.eventId,
+      userId: req.query.userId
+    };
+    
+    const tickets = await getAllTicketsService(filters);
+    res.status(200).json(tickets);
+  } catch (error) {
+    res.status(500).json({ 
+      message: 'Error fetching tickets', 
+      error: error.message 
+    });
+  }
+};
+

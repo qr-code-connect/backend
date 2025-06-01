@@ -1,6 +1,19 @@
 import createCategoryService from "../services/CategoryServices/createCategoryServices.js";
+import getAllCategoryService from "../services/CategoryServices/getAllcategoryService.js";
 
+const getAllCategories = async (req, res) => {
+  try {
+    const eventId = req.query.eventId; 
+    const categories = await getAllCategoryService(eventId);
 
+    res.status(200).json(categories);
+  } catch (error) {
+    res.status(500).json({ 
+      message: 'Error fetching companies', 
+      error: error.message 
+    });
+  }
+};
 
 
 const createCaTegory = async (req, res) => {
@@ -16,5 +29,6 @@ const createCaTegory = async (req, res) => {
 
 
 export {
-    createCaTegory
+    createCaTegory,
+    getAllCategories
 }

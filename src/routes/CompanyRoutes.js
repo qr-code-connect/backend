@@ -9,4 +9,4 @@ const router = express.Router();
 router.post('/create_company',createCompany);
 router.get('/get_all_companies',getAllCompanies);
 
-export default router;
+export default router; 

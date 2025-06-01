@@ -1,14 +1,9 @@
+// routes/TicketRoutes.js
 import express from 'express';
-import purchaseTicket from '../controllers/TicketController.js';
-
+import {getAllTickets} from '../controllers/TicketController.js'
 const router = express.Router();
 
 
 
-router.patch('/buy_ticket',purchaseTicket);
-
-
-
-
-
+router.get('/get_all_tickets', getAllTickets);
 export default router;
