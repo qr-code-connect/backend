@@ -6,9 +6,13 @@ import Customer from "../../models/CustomerModel.js";
 
 const getAllTicketsService = async (filters = {}) => {
   try {
-    const { eventId, userId } = filters;
+    const { eventId, userId, categoryId} = filters;
     const whereClause = {};
     
+    if (categoryId) {
+      whereClause.id_category = categoryId;
+    }
+
     if (eventId) {
       whereClause.id_event = eventId;
     }

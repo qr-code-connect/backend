@@ -6,7 +6,8 @@ export const getAllTickets = async (req, res) => {
   try {
     const filters = {
       eventId: req.query.eventId,
-      userId: req.query.userId
+      userId: req.query.userId,
+      categoryId:req.query.categoryId
     };
     
     const tickets = await getAllTicketsService(filters);
