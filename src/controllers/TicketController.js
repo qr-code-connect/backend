@@ -5,6 +5,7 @@ import validateTicketService from "../services/TicketsServices/validateTicketSer
 export const getAllTickets = async (req, res) => {
   try {
     const filters = {
+      id:req.query.id,
       eventId: req.query.eventId,
       userId: req.query.userId,
       categoryId:req.query.categoryId

@@ -6,5 +6,6 @@ const router = express.Router();
 
 
 router.get('/get_all_tickets', getAllTickets);
+
 router.patch('/validate/:ticketId', validateTicket);
 export default router;
