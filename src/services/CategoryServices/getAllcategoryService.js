@@ -1,22 +1,27 @@
 import Category from "../../models/categoryModel.js";
 
-const getAllCategoryService = async (eventId = null) => {
+const getAllCategoryService = async (filters ={}) => {
   try {
-    const options = {
-      order: [['category', 'ASC']],
-    };
+      const { eventId , categoryId} = filters;
 
-    console.log("LOGANDO EVENTID",eventId);
-    
-    if (eventId) {
-      options.where = {
-        id_event: eventId
-      };
-    }
+        console.log(" CATEGORIES ID", categoryId);
+      const whereClause = {};
 
-    return await Category.findAll(options);
+      if (eventId) {
+          whereClause.id_event = eventId;
+      }
+      if (categoryId) {
+        whereClause.id = categoryId;
+      }
+
+      const categories = await Category.findAll({
+        where:whereClause,
+      });
+       console.log(" CATEGORIES", categories);
+      return categories;
   } catch (error) {
-    throw new Error(`Error fetching categories: ${error.message}`);
+    console.log("ERROR GETTING CATEGORIES", error);
+    throw new Error(`Failed to fetch categories: ${error.message}`);
   }
 };
 export default getAllCategoryService;
