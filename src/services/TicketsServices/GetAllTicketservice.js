@@ -1,49 +1,33 @@
 // services/ticketServices/getAllTicketsService.js
 import Ticket from "../../models/ticketsModel.js";
-import Event from "../../models/eventsModels.js";
-import Category from "../../models/categoryModel.js";
-import Customer from "../../models/CustomerModel.js";
+
 
 const getAllTicketsService = async (filters = {}) => {
   try {
-    const { id,eventId, userId, categoryId} = filters;
+    const { id, eventId, userId, categoryId, available } = filters;
     const whereClause = {};
-    
 
-     if (id) {
+    if (id) {
       whereClause.id = id;
     }
     if (categoryId) {
       whereClause.id_category = categoryId;
     }
-
     if (eventId) {
       whereClause.id_event = eventId;
     }
-
     if (userId) {
       whereClause.id_customer = userId;
+    }
+    if (available !== undefined) {
+      whereClause.available = available; // ⬅️ ADD THIS LINE
     }
 
     console.log("TICKET FILTERS:", filters);
 
     const tickets = await Ticket.findAll({
       where: whereClause,
-      //include: [
-      //  {
-      //    model: Event,
-      //    attributes: ['name', 'date', 'description'],
-      //  },
-      //  {
-      //    model: Category,
-      //    attributes: ['name', 'price'],
-      //  },
-      //  {
-      //    model: Customer,
-      //    attributes: ['name', 'email'],
-      //  }
-      //],
-      order: [['createdAt', 'DESC']], // Newest tickets first
+      order: [['createdAt', 'DESC']],
     });
 
     return tickets;
@@ -52,5 +36,6 @@ const getAllTicketsService = async (filters = {}) => {
     throw new Error(`Failed to fetch tickets: ${error.message}`);
   }
 };
+
 
 export default getAllTicketsService;
