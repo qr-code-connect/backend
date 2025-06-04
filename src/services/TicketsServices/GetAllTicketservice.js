@@ -27,7 +27,7 @@ const getAllTicketsService = async (filters = {}) => {
 
     const tickets = await Ticket.findAll({
       where: whereClause,
-      order: [['createdAt', 'DESC']],
+    
     });
 
     return tickets;
