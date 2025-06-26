@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 
-export const database = new Sequelize('postgres', 'postgres', 'qrcodeconnect2025univel', {
-    host: 'database-qr-connect.cpgmqacmqimg.us-east-2.rds.amazonaws.com',
+export const database = new Sequelize('postgres', 'postgres', 'qrConnect2025', {
+    host: 'databaseqrconnect.cpgmqacmqimg.us-east-2.rds.amazonaws.com',
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
@@ -21,7 +21,7 @@ export async function verifyConnectionDatabase() {
         await database.authenticate();
         console.log('Connection to the database has been established successfully.');
 
-        //await database.sync(); // creates the tables by deleting the data
+        await database.sync(); // creates the tables by deleting the data
         console.log('🗃️☑️ Create tables!');
 
     } catch (error) {
